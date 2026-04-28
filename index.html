@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Neama Agina - Marketing Specialist, Event Coordinator & Content Creator. Portfolio with navy overlays, rotatable cards, and smooth scrolling.">
+  <meta name="author" content="Neama Agina">
+  <title>Neama Agina | Marketing & Content Creator Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Smooth scrolling for all anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #1e40af;
+      --secondary: #0f172a;
+      --accent: #60a5fa;
+      --gray-bg: #f8fafc;
+      --gray-border: #e2e8f0;
+      --card-shadow: 0 12px 30px rgba(0, 0, 0, 0.05), 0 4px 8px rgba(0, 0, 0, 0.02);
+      --hover-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.25s ease;
+      --navy-overlay: rgba(15, 23, 42, 0.88);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #ffffff, #93c5fd);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #e2e8f0;
+      transition: var(--transition);
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    @media (max-width: 768px) {
+      .nav-content {
+        flex-direction: column;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background-color: var(--primary);
+      color: white;
+      padding: 0.7rem 1.6rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      color: white;
+    }
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+    .btn:hover {
+      transform: translateY(-3px);
+      background-color: var(--primary-dark);
+      box-shadow: 0 8px 20px rgba(59,130,246,0.3);
+    }
+
+    /* All sections: unified navy overlay */
+    section {
+      position: relative;
+      padding: 5rem 0;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--navy-overlay);
+      z-index: 1;
+    }
+    /* Background images - hero updated with fresh marketing image */
+    .bg-hero {
+      background-image: url('https://images.unsplash.com/photo-1552581234-26160f608093?w=1600&q=80');
+    }
+    .bg-experience {
+      background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80');
+    }
+    .bg-skills {
+      background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1600&q=80');
+    }
+    .bg-projects {
+      background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&q=80');
+    }
+    .bg-edu {
+      background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=80');
+    }
+    .bg-contact {
+      background-image: url('https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1600&q=80');
+    }
+
+    /* Hero layout (no wrap on desktop) */
+    .hero-grid {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-info {
+      flex: 1;
+    }
+    .hero-avatar {
+      flex: 0 0 auto;
+    }
+    /* Deviated rectangle shape: rounded rectangle with slight rotation and skew */
+    .avatar-rectangle {
+      width: 180px;
+      height: 180px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border-radius: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.2);
+      border: 2px solid rgba(255,255,255,0.3);
+      overflow: hidden;
+      transform: rotate(2deg) skewX(-1deg);
+      transition: transform 0.3s ease;
+    }
+    .avatar-rectangle:hover {
+      transform: rotate(0deg) skewX(0deg);
+    }
+    .avatar-rectangle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transform: scale(1.02);
+      transition: transform 0.3s ease;
+    }
+    .avatar-rectangle:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Hero text styles (white on navy) */
+    .hero-info h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff, #93c5fd);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .hero-tagline {
+      font-size: 1.25rem;
+      color: #e2e8f0;
+      margin: 1rem 0 1.5rem 0;
+      border-left: 4px solid var(--primary);
+      padding-left: 1rem;
+    }
+    .hero-info p {
+      color: #cbd5e1;
+    }
+    .social-links {
+      display: flex;
+      gap: 1.2rem;
+      margin: 1.8rem 0;
+    }
+    .social-links a {
+      background: rgba(255, 255, 255, 0.15);
+      width: 46px;
+      height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.3rem;
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .social-links a:hover {
+      background: var(--primary);
+      transform: translateY(-4px);
+      border-color: transparent;
+    }
+
+    /* Responsive hero */
+    @media (max-width: 768px) {
+      .hero-grid {
+        flex-wrap: wrap;
+        text-align: center;
+      }
+      .hero-info {
+        text-align: center;
+      }
+      .hero-tagline {
+        border-left: none;
+        padding-left: 0;
+      }
+      .social-links {
+        justify-content: center;
+      }
+      .avatar-rectangle {
+        width: 150px;
+        height: 150px;
+      }
+      .hero-info h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Section titles */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+      color: white !important;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 4px;
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    /* Ensure text inside white cards remains dark */
+    .exp-card, .skill-category, .flip-card-front, .flip-card-back, .edu-item, .additional-list span, .contact-flex {
+      color: #1e293b;
+    }
+    .exp-card p, .skill-category p, .exp-list li, .project-desc-front, .back-description, .back-detail-list li {
+      color: #334155;
+    }
+
+    /* Experience Cards */
+    .exp-card {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--gray-border);
+      transition: var(--transition);
+    }
+    .exp-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--hover-shadow);
+    }
+    .exp-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+    }
+    .exp-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+    .exp-company {
+      font-weight: 600;
+      color: #334155;
+    }
+    .exp-date {
+      font-size: 0.85rem;
+      background: #eef2ff;
+      padding: 4px 12px;
+      border-radius: 30px;
+      color: var(--primary-dark);
+    }
+    .exp-list {
+      padding-left: 1.2rem;
+      margin-top: 0.8rem;
+    }
+    .exp-list li {
+      margin: 0.45rem 0;
+    }
+
+    /* Skills grids */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+    .skill-category {
+      flex: 1 1 250px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(2px);
+      padding: 1.5rem;
+      border-radius: 1.2rem;
+      transition: var(--transition);
+      border: 1px solid rgba(226, 232, 240, 0.7);
+    }
+    .skill-category h3 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0f172a;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .skill-tags span {
+      background: white;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1e293b;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      border: 1px solid var(--gray-border);
+    }
+
+    /* Rotatable flip cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      height: 380px;
+      perspective: 1500px;
+      cursor: pointer;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+      border-radius: 1.2rem;
+      box-shadow: var(--card-shadow);
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 1.2rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid var(--gray-border);
+    }
+    .flip-card-front {
+      background: white;
+      transform: rotateY(0deg);
+    }
+    .flip-card-back {
+      background: linear-gradient(145deg, #f8fafc, #ffffff);
+      transform: rotateY(180deg);
+      text-align: left;
+      overflow-y: auto;
+    }
+    .project-icon {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .project-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      text-align: left;
+      color: #0f172a;
+    }
+    .project-desc-front {
+      font-size: 0.9rem;
+      line-height: 1.45;
+      text-align: left;
+      flex-grow: 1;
+      margin: 0.5rem 0;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 1rem 0;
+    }
+    .project-tags span {
+      background: #eef2ff;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    .back-description {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin: 0.5rem 0 1rem;
+    }
+    .back-detail-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.8rem 0;
+    }
+    .back-detail-list li {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .back-detail-list i {
+      color: var(--primary);
+      width: 20px;
+    }
+    .flip-card-back .btn-small {
+      background: var(--primary);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+      transition: var(--transition);
+    }
+    .flip-card-back .btn-small:hover {
+      background: var(--primary-dark);
+      transform: translateX(3px);
+    }
+    .rotate-hint {
+      font-size: 0.7rem;
+      color: #64748b;
+      margin-top: 1rem;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+    }
+    @media (max-width: 640px) {
+      .flip-card {
+        height: 420px;
+      }
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* Education */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: baseline;
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--gray-border);
+    }
+    .additional-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    .additional-list span {
+      background: white;
+      border: 1px solid var(--gray-border);
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+    }
+
+    /* Contact */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 2rem;
+      border-radius: 2rem;
+      border: 1px solid var(--gray-border);
+    }
+    .contact-info a {
+      display: block;
+      margin: 0.5rem 0;
+      text-decoration: none;
+      transition: var(--transition);
+      color: #1e293b;
+    }
+    .contact-info a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #e2e8f0;
+      position: relative;
+      z-index: 2;
+    }
+    .footer .footer-name {
+      background: linear-gradient(135deg, #ffffff, #93c5fd);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-weight: 700;
+    }
+
+    /* Scroll animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 640px) {
+      .hero-info h1 { font-size: 2rem; }
+      .section-title { font-size: 1.8rem; }
+      .container { padding: 0 20px; }
+      section {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container nav-content">
+    <span class="logo">Neama Agina</span>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero section - updated background image with deviated rectangle avatar -->
+  <section id="home" class="hero bg-hero">
+    <div class="container hero-grid">
+      <div class="hero-info fade-up">
+        <h1>Neama Agina</h1>
+        <div class="hero-tagline">Marketing Specialist | Event Coordinator | Content Creator</div>
+        <p>Creative marketing specialist with a background in mass communication & filmmaking. Experienced in content creation, social media management, and customer engagement. I craft visual stories that drive brand growth and authentic audience interaction.</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/neama-agina-504979227" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:neamaahmedagina@gmail.com" aria-label="Email"><i class="far fa-envelope"></i></a>
+          <a href="https://www.notion.so/NEAMA-AGINA-aa3416a1c8b943dab09bdf3fe8345f71" target="_blank" aria-label="Notion Portfolio"><i class="fas fa-folder-open"></i></a>
+          <a href="tel:+201063644443" aria-label="Phone"><i class="fas fa-phone-alt"></i></a>
+        </div>
+        <a href="#contact" class="btn">Get in touch <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="hero-avatar fade-up">
+        <div class="avatar-rectangle">
+          <!-- Replace with your actual image. Ensure NEAMA.JPG is in the same folder -->
+          <img src="N2.png" alt="Neama Agina">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="bg-experience">
+    <div class="container">
+      <h2 class="section-title fade-up">Work Experience</h2>
+      <div class="timeline-grid" style="display: flex; flex-direction: column; gap: 1.8rem;">
+        <div class="exp-card fade-up">
+          <div class="exp-header">
+            <div><span class="exp-title">Marketing Coordinator</span> <span class="exp-company">@ Mideast Communication Systems (MCS)</span></div>
+            <div class="exp-date">Oct 2025 – Apr 2026</div>
+          </div>
+          <ul class="exp-list"><li>Coordinated end-to-end logistics for multiple marketing events, vendor communication, on-site setup</li><li>Planned corporate events, workshops, client-facing activities; prepared brand-aligned giveaways</li><li>Managed event timelines, on-ground operations, quick problem resolution, post-event reporting</li></ul>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-header">
+            <div><span class="exp-title">Digital Marketing & Media Coordinator</span> <span class="exp-company">@ The Continental School of Cairo</span></div>
+            <div class="exp-date">Aug 2024 – Jun 2025</div>
+          </div>
+          <ul class="exp-list"><li>Managed social media content across Instagram, Facebook, LinkedIn, TikTok; boosted engagement</li><li>Produced high-quality visuals, videos, and fast-paced creatives for daily communication</li><li>Edited photos/videos ensuring brand consistency, assisted ICT co-teachers</li></ul>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-header">
+            <div><span class="exp-title">Customer Service Representative (Tech Support)</span> <span class="exp-company">@ Teleperformance (Apple Care)</span></div>
+            <div class="exp-date">Aug 2022 – Apr 2024</div>
+          </div>
+          <ul class="exp-list"><li>Resolved technical issues, maintained high customer satisfaction, managerial-level responsibility</li><li>Team coordination, service quality assurance, developed troubleshooting & communication skills</li></ul>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-header"><div><span class="exp-title">Online Instructor (Part-Time)</span> <span class="exp-company">@ My Roots (Canada)</span></div><div class="exp-date">Mar 2023 – Sep 2023</div></div>
+          <ul class="exp-list"><li>Delivered online sessions to international students, enhanced teaching & cross-cultural communication</li></ul>
+        </div>
+        <div class="exp-card fade-up">
+          <div class="exp-header"><div><span class="exp-title">Intern</span> <span class="exp-company">@ The Lean Company & BACOES</span></div><div class="exp-date">2019 – 2021</div></div>
+          <ul class="exp-list"><li>Supported internal operations, event & course planning, logistics coordination, workflow systems</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="bg-skills">
+    <div class="container">
+      <h2 class="section-title fade-up">Core Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-category fade-up"><h3><i class="fas fa-bullhorn"></i> Marketing & Content</h3><div class="skill-tags"><span>Social Media Management</span><span>Content Strategy</span><span>Copywriting</span><span>Brand Awareness</span><span>Audience Engagement</span><span>Digital Campaigns</span></div></div>
+        <div class="skill-category fade-up"><h3><i class="fas fa-pen-fancy"></i> Creative & Design</h3><div class="skill-tags"><span>Adobe Photoshop</span><span>Premiere Pro</span><span>After Effects</span><span>InDesign</span><span>Canva</span><span>Photography</span><span>Videography</span></div></div>
+        <div class="skill-category fade-up"><h3><i class="fas fa-video"></i> Media Production</h3><div class="skill-tags"><span>Video Editing (Reels/Ads)</span><span>Storyboarding</span><span>Filming Setup</span><span>Promotional Editing</span></div></div>
+        <div class="skill-category fade-up"><h3><i class="fas fa-headset"></i> Professional</h3><div class="skill-tags"><span>Problem Solving</span><span>Team Coordination</span><span>Time Management</span><span>Multitasking</span><span>Adaptability</span><span>CRM Tools</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="bg-projects">
+    <div class="container">
+      <h2 class="section-title fade-up">Featured Projects <span style="font-size: 0.8rem; background: rgba(59,130,246,0.3); padding: 2px 10px; border-radius: 20px; margin-left: 12px;">hover / tap to flip</span></h2>
+      <p class="fade-up" style="margin-bottom: 2rem; color: #cbd5e1;">Explore event coordination, digital campaigns, and filmmaking projects. <strong>Rotate each card</strong> for details & Notion link.</p>
+      <div class="projects-grid" id="projects-container"></div>
+      <div class="fade-up" style="text-align: center; margin-top: 2.5rem;">
+        <a href="https://www.notion.so/NEAMA-AGINA-aa3416a1c8b943dab09bdf3fe8345f71" target="_blank" class="btn btn-outline"><i class="fab fa-notion"></i> Complete Portfolio on Notion</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="bg-edu">
+    <div class="container">
+      <div class="fade-up">
+        <h2 class="section-title">Education & Highlights</h2>
+        <div class="edu-item"><span><strong>🎓 Bachelor of Mass Communication (Filmmaking Major)</strong> — British University in Cairo (BUE)</span><span>2018 – 2022</span></div>
+        <div class="edu-item"><span><strong>📘 IGCSE</strong> — The Continental School of Cairo</span><span>2015 – 2018</span></div>
+        <h3 style="margin: 1.5rem 0 1rem 0; color: white;">Additional Experience & Volunteering</h3>
+        <div class="additional-list">
+          <span>Head Scientific Team - Mass Comm Student Union</span>
+          <span>Media Team - BUE Mechanical Engineering</span>
+          <span>Activities Team - BUE Volunteering Club</span>
+          <span>Drawing Team - Artophobia Club</span>
+        </div>
+        <div style="margin-top: 1.5rem; color: white;"><strong>Languages:</strong> Arabic (Native) | English (Proficient - C1)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="bg-contact">
+    <div class="container">
+      <div class="contact-flex fade-up">
+        <div>
+          <h3 style="font-size: 1.5rem; margin-bottom: 0.75rem;">Let's Connect</h3>
+          <p>Ready to bring creative marketing & storytelling to your next project? Reach out!</p>
+          <div class="contact-info" style="margin-top: 1rem;">
+            <a href="mailto:neamaahmedagina@gmail.com"><i class="far fa-envelope"></i> neamaahmedagina@gmail.com</a>
+            <a href="tel:+201063644443"><i class="fas fa-phone-alt"></i> +20 106 364 4443</a>
+            <a href="https://www.linkedin.com/in/neama-agina-504979227" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+            <a href="https://www.notion.so/NEAMA-AGINA-aa3416a1c8b943dab09bdf3fe8345f71" target="_blank"><i class="fas fa-folder-open"></i> Notion Portfolio (full projects)</a>
+          </div>
+        </div>
+        <div><i class="fas fa-laptop-code" style="font-size: 4rem; color: var(--primary); opacity: 0.8;"></i></div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <p>© 2025 — All Rights Reservered for  <span class="footer-name">Neama Agina</span>  </p>
+  </footer>
+</main>
+
+<script>
+  const projectsData = [
+    { title: "Corporate Event & Giveaways", shortDesc: "End-to-end logistics, vendor communication, branded giveaways.", fullDesc: "At MCS, planned corporate events, workshops, and giveaways increasing engagement by 30%. Oversaw scheduling, onsite setup, and post-event analysis.", highlights: ["Vendor & timeline mgmt", "+30% engagement", "Post-event reports"], tags: ["Event Planning","Logistics"], notionLink: "https://www.notion.so/NEAMA-AGINA-aa3416a1c8b943dab09bdf3fe8345f71", icon: "fas fa-calendar-check" },
+    { title: "Digital Media Campaign", shortDesc: "School social boost: 40+ reels, +45% engagement.", fullDesc: "Increased reach via creative reels, daily visuals, consistent branding for Continental School.", highlights: ["40+ video reels","+45% engagement","Brand identity"], tags: ["Content Creation","Social Media"], notionLink: "https://www.notion.so/NEAMA-AGINA-aa3416a1c8b943dab09bdf3fe8345f71", icon: "fas fa-chart-line" },
+    { title: "Short Film & Storytelling", shortDesc: "Scriptwriting, directing, editing (Premiere Pro).", fullDesc: "Award-nominated short film: from storyboard to final edit, showcased at BUE film festival.", highlights: ["Scriptwriting","Cinematography","Post-production"], tags: ["Filmmaking","Editing"], notionLink: "https://www.notion.so/NEAMA-AGINA-aa3416a1c8b943dab09bdf3fe8345f71", icon: "fas fa-film" },
+    { title: "Customer Experience Leadership", shortDesc: "From tech support to managerial-level coordination.", fullDesc: "Led team coordination at Teleperformance (Apple), maintained KPIs and mentored new agents.", highlights: ["Managerial escalation","Team mentoring","High CSAT"], tags: ["Leadership","CRM"], notionLink: "https://www.notion.so/NEAMA-AGINA-aa3416a1c8b943dab09bdf3fe8345f71", icon: "fas fa-users" },
+    { title: "Event Course Planning Intern", shortDesc: "Organized training for 100+ attendees.", fullDesc: "Coordinated logistics, participant communication, on-site support for BACOES events.", highlights: ["100+ attendees","Logistics mgmt","Event execution"], tags: ["Coordination","Planning"], notionLink: "https://www.notion.so/NEAMA-AGINA-aa3416a1c8b943dab09bdf3fe8345f71", icon: "fas fa-chalkboard-user" }
+  ];
+
+  const container = document.getElementById('projects-container');
+  if(container) {
+    projectsData.forEach(proj => {
+      const flipCard = document.createElement('div');
+      flipCard.className = 'flip-card fade-up';
+      flipCard.innerHTML = `<div class="flip-card-inner">
+        <div class="flip-card-front"><div><div class="project-icon"><i class="${proj.icon}"></i></div><div class="project-title">${proj.title}</div><div class="project-desc-front">${proj.shortDesc}</div><div class="project-tags">${proj.tags.map(t => `<span>${t}</span>`).join('')}</div></div><div class="rotate-hint"><i class="fas fa-sync-alt"></i> <span>rotate me</span></div></div>
+        <div class="flip-card-back"><div style="overflow-y:auto;"><div class="project-icon"><i class="${proj.icon}"></i></div><div class="project-title">${proj.title}</div><div class="back-description">${proj.fullDesc}</div><ul class="back-detail-list">${proj.highlights.map(h => `<li><i class="fas fa-check-circle"></i> ${h}</li>`).join('')}</ul><a href="${proj.notionLink}" target="_blank" class="btn-small"><i class="fab fa-notion"></i> More on Notion</a><div class="rotate-hint" style="margin-top:1rem;"><i class="fas fa-undo-alt"></i> <span>hover/tap to flip back</span></div></div></div>
+      </div>`;
+      container.appendChild(flipCard);
+    });
+    document.querySelectorAll('.flip-card').forEach(card => {
+      card.addEventListener('click', function(e) { if(!e.target.closest('a')) this.classList.toggle('flipped'); });
+    });
+  }
+
+  const fadeElements = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if(entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
+  fadeElements.forEach(el => observer.observe(el));
+  window.addEventListener('load', () => { fadeElements.forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight-100) el.classList.add('visible'); }); });
+</script>
+</body>
+</html>
